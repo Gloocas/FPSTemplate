@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd6ax8xq7ndk5"]
+
+[ext_resource type="Script" path="res://scripts/booster.gd" id="1_wmrsn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfqy4"]
+size = Vector3(1, 0.0336914, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pjbw3"]
+size = Vector3(1, 0.1, 1)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_wmrsn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02708, 0)
+shape = SubResource("BoxShape3D_hfqy4")
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0167174, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02708, 0)
+shape = SubResource("BoxShape3D_hfqy4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00325, 0)
+mesh = SubResource("BoxMesh_pjbw3")
+
+[connection signal="body_entered" from="StaticBody3D/Area3D" to="." method="_on_area_3d_body_entered"]

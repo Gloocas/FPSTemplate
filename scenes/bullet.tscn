@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3cqa2dyr7hyq"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_8ifxy"]
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_8ifxy")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+target_position = Vector3(0, 0, 5)
+collision_mask = 3

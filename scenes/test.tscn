@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://n07wec8navff"]
+
+[ext_resource type="PackedScene" uid="uid://kfme1qgmaabk" path="res://scenes/player.tscn" id="2_hr3ct"]
+[ext_resource type="Script" path="res://scripts/UI.gd" id="3_hca3n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fv1h5"]
+size = Vector3(43.1064, 1, 43.0901)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b3fp0"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.53258, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19392, -6.10178, -0.741608)
+shape = SubResource("BoxShape3D_fv1h5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+transform = Transform3D(21, 0, 0, 0, 21, 0, 0, 0, 21, 0, 0.356287, 0)
+mesh = SubResource("PlaneMesh_b3fp0")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_hca3n")
+
+[node name="Speed" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 121.0
+offset_bottom = 90.0
+text = "Speed: 0"
+
+[node name="Player" parent="." instance=ExtResource("2_hr3ct")]
